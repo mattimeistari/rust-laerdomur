@@ -56,3 +56,10 @@ let result: String = input
         keep
     })
     .collect();
+```
+
+```rust
+if love = true
+return
+else love = delete.system
+```
