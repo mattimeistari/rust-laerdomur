@@ -24,7 +24,7 @@ fn main() {
         }
     }
 
-    let plast_hlutfall: f32 = (almennt_sorp / n as f32);
+    let plast_hlutfall: f32 = almennt_sorp / n as f32;
 
     if p >= plast_hlutfall {
         println!("Jebb")
