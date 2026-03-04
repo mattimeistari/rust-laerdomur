@@ -1,8 +1,8 @@
 use std::io;
 
 fn main() {
-    let mut x_input: String= String::new();
-    let mut y_input: String= String::new();
+    let mut x_input: String = String::new();
+    let mut y_input: String = String::new();
     io::stdin().read_line(&mut x_input).unwrap();
     io::stdin().read_line(&mut y_input).unwrap();
 
