@@ -79,3 +79,50 @@ fn main() {
 Líkt og () í stærðfræði þar sem unnið er úr sviganum og síðan kemur lokasvar.
 5 * (6 + 7) ==== 5 * (13) ==== 5 * 13 (expression búin að skila sér) ==== 65
 Expressions eru líka kall í fall eða fjölvaskipun (macro)
+
+## Eigendur
+
+### Stack og Heap
+
+Þegar forrit geymir gögn í vinslumynni þá eru tvær leiðir sem öll forrit taka. 
+Þessar tvær heita stack og heap.
+
+#### Stack
+Stack virkar eins og stafli af diskum. Ef hann lýtur svona út:
+
+<span style="color:red">diskur</span>  
+<span style="color:blue">diskur</span>  
+<span style="color:green">diskur</span>  
+<span style="color:orange">diskur</span>  
+<span style="color:purple">diskur</span>  
+
+Þá er voða erfitt að taka appelsínugula diskinn því það að taka hann myndi láta alla hina hrinja.
+
+Þú getur bara sett ofan á efsta disk og tekið efsta disk.
+Þetta hugtak heitir last in, first out (LIFO).
+
+En út af því að það er allt að gerast efst í bunkanum þá ertu enga stund að finna og nota diskinn.
+
+Einungis er hægt að setja disk á staflann ef vitað er stærðin á disknum við þýðingartíma (compile time).
+
+Dæmi um staflann er til dæmis þegar kallað er á fall í kerfisforritunarmáli þá eru færibreyturnar sem koma með fallskalli-
+```rust
+fn samlagning(a: i32, b: i32) -> i32 {
+    a + b
+}
+```
+allar geymdar á staflanum þangað til að fallið er búið og öllum diskum eru hentir í ruslið.
+
+#### Heap
+
+Hin leiðin heitir heap og er notuð þegar lokastærð er óþekkt eða getur breyst. Ísl: Kös
+
+Þegar gögn eiga að vera geymd á kösinni fer forritunarmálið að leita af lausum gögnum í vinnsluminninu og pantar sér x mikið pláss.
+Þegar gögnin hafa fundið sér sæti í kösinni skilar forritunarmálið bendir (pointer) á stað á vinnsluminninu. Bendirinn fer síðan á staflann.
+
+Síðan ef breytingar gerast við gögnin þá finnur tölvan bendinn og leitar af sætinu sínu skv. leibeiningum bendisins.
+
+
+Þetta er tiltökulega hægt ferli miðað við að fara beint á staflann út af auka skrefunum sem eiga sér stað við
+það að geyma gögn á kösinni.
+
