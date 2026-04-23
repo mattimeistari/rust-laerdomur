@@ -126,3 +126,81 @@ Síðan ef breytingar gerast við gögnin þá finnur tölvan bendinn og leitar 
 Þetta er tiltökulega hægt ferli miðað við að fara beint á staflann út af auka skrefunum sem eiga sér stað við
 það að geyma gögn á kösinni.
 
+# Lesson Plan
+
+## 0:00 - 0:10 | Afh Rust?
+
+Flest hraðfær mál eins og C og C++ eru fljót en hjálpa voða lítið við það að halda kóðann sinn öruggann og hagkvæmann.
+Til dæmis þegar kóðinn á að hafa tvo vinnsluminnis punkta á sama stað sem veldur minnisspillingu eða hruni.
+
+### Hvað er öðruvísi?
+Rust kemur í veg fyrir nánast ef ekki allar svona forritunar galla með því
+að þýða kóða þinn ekki nema að allt sé snyrtilega gert hjá forritara.
+Þessi þýðandi má vera talinn sem eins konar félaga í tölvunni sem vill einungis
+að kóðinn þinn sé vel upp settur. Lýsandi og greind villuboð hjálpa manni að
+skrifa kóða án þess að þurfa að hoppa yfir á Google eða gerfigreindina.
+
+### Hverjum er ekki sama?
+En þá er ég að pæla hvort þetta skipti einhverju máli? Kannski ekki handa okkur sérstaklega á þessu stigi.
+En þetta er helvíti mikilvægt fyrir forritara á NASA. Til dæmis er málið notað til að skrifa
+öruggann kóða á gerfihnetti þannig að þeir hrynja ekki útí geim, eða í bakenda á raketu flugs forritum.
+
+### Dæmi
+Minecraft Bedrock er að mörgu leyti skrifað í Rust því leikurinn á að geta keyrt á farsímum, leikjatölvum og borðtölvum jafn vel.
+Minecraft samfélagið er mikið að skrifa í Rust og fyrir þá sem vita hvað Modrynth er þá er það um 40% Rust.
+
+Discord skipti frá Go yfir í Rust árið 2020 og eftir það varð vinnslutími tífalt hraðari og lagaði stórt vandamál hjá þeim.
+Þetta var út af því að rusl gögn voru geymd endalaust og voru að hæga á hjá þeim.
+
+Að lokum sagði Microsoft að 70% af öryggisvandamálum hjá þeim væri út af minnis-vandamálum.
+
+## 0:10 - 0:25 | Smá syntax
+Vísa nemendum beint inná [Rust Playground](play.rust-lang.org)
+
+```rust
+fn main {
+    println!("Sæl veröld.");
+} // Sæl veröld.
+```
+
+Öll forrit verða að vera með main fall og aðal kóðinn fer inn í hann.
+
+```rust
+fn main() {
+    let x = 10;
+
+    println!("{x}") 
+} // 10
+```
+Þetta er nú bara almen breyta nema það að þú getur ekki breytt henni.
+
+```rust
+fn main() {
+    let x = 10;
+
+    x += 5;
+
+    println!("{x}") 
+} // error[E0384]
+```
+Hérna fáum við villu því ekki má breyta fasta.
+
+Ef þið lesið villuna getið þið lagað kóðann fyrir mig og fengið rétta lausn?
+
+```rust
+fn main() {
+    let x = 10;
+
+    x += 5;
+
+    println!("{x}") 
+} // 15
+```
+
+## 0:25 - 0:45 | Hvernig er þetta öruggt?
+
+### Eigendur
+Eigendur eru ekkert það flókin. Segjum að ég eigi X. Ég ætla síðan að rétta nemanda hlutnum.
+Þá á nemandinn hlutinn og ég á ekkert við hann að gera. Svona smá eins og kærasta.
+En ef að ég tek kannski hlutinn en bara í smá stund og ætla mér síðan að skila honum seinna
+þá er það að fá lánað. Svona smá eins og kærasta. 
