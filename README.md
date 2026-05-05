@@ -157,9 +157,41 @@ Að lokum sagði Microsoft að 70% af öryggisvandamálum hjá þeim væri út a
 ## 0:10 - 0:25 | Smá syntax
 Vísa nemendum beint inná [Rust Playground](play.rust-lang.org)
 
+
+## 0:25 - 0:45 | Hvernig er þetta öruggt?
+
+### Eigendur
+Eigendur eru ekkert það flókin. Segjum að ég eigi X. Ég ætla síðan að rétta nemanda hlutnum.
+Þá á nemandinn hlutinn og ég á ekkert við hann að gera. (Move) Svona smá eins og kærasta.
+En ef að ég tek kannski hlutinn en bara í smá stund og ætla mér síðan að skila honum seinna
+þá er það að fá lánað. (Borrow) (&) Svona smá eins og kærasta. 
+
 ```rust
-fn main {
-    println!("Sæl veröld.");
+fn main() {
+    let x = String::from("hello");
+
+    let y = x;
+
+    println!("{x}");
+} // error[E0382]
+```
+
+```rust
+fn main() {
+    let x = String::from("hello");
+
+    let y = &x;
+
+    println!("{x}");
+} // 15
+```
+
+### Breytur
+```rust
+fn main() {
+    let x = String::from("Sæl veröld.");
+
+    println!("{x}");
 } // Sæl veröld.
 ```
 
@@ -180,7 +212,7 @@ fn main() {
 
     x += 5;
 
-    println!("{x}") 
+    println!("{x}");
 } // error[E0384]
 ```
 Hérna fáum við villu því ekki má breyta fasta.
@@ -193,14 +225,108 @@ fn main() {
 
     x += 5;
 
-    println!("{x}") 
+    println!("{x}");
 } // 15
 ```
 
-## 0:25 - 0:45 | Hvernig er þetta öruggt?
+### For lúpa
+```rust
+fn main() {
+    for i in 0..5 {
+        println!("Number: {}", i);
+    }
+} // 0..=5 <-- er líka hægt og prentar þá líka 5.
+``` 
 
-### Eigendur
-Eigendur eru ekkert það flókin. Segjum að ég eigi X. Ég ætla síðan að rétta nemanda hlutnum.
-Þá á nemandinn hlutinn og ég á ekkert við hann að gera. Svona smá eins og kærasta.
-En ef að ég tek kannski hlutinn en bara í smá stund og ætla mér síðan að skila honum seinna
-þá er það að fá lánað. Svona smá eins og kærasta. 
+### While lúpa
+
+```rust
+fn main() {
+    let mut count = 5;
+
+    while count != 0 {
+        println!("{count}!");
+        count -= 1;
+    }
+
+    println!("LIFTOFF!");
+}
+```
+
+```rust
+fn main() {
+    let mut stack = vec![1, 2, 3];
+
+    while let Some(top) = stack.pop() {
+        println!("Popped: {}", top);
+    }
+}
+```
+
+### Match
+```rust
+let number = 3;
+
+match number {
+    1 => println!("One!"),
+    2 | 3 => println!("Two or Three!"),
+    4..=10 => println!("Between four and ten!"),
+    _ => println!("Everything else!"),
+}
+```
+
+### Taka inn inntaki
+[leynithjonusta](https://iceland.kattis.com/problems/leynithjonusta)
+
+```rust
+use std::io;
+
+fn main() {
+    let mut input = String::new(); // Búa til auðann streng til að fylla seinna
+    
+    io::stdin().read_line(&mut input).unwrap();
+
+    // .read_line(&mut input) les alla línuna sem kemur fram
+    //            ^________^ Segir til um hvert línan á að fara sem lesin er.
+
+    // .unwrap() Segir forritinu að það þurfi ekki að tékka hvort það hafi komið eitthvað. Ég veit bara að það hefur gerst.
+    
+    let mut clean_email = String::new(); // Nýr auður strengur
+    
+    for c in input.chars() {
+        if !c.is_whitespace() {
+            clean_email.push(c);
+        }
+    }
+    
+    println!("{}", clean_email)
+}
+```
+
+[storafmaeli](https://iceland.kattis.com/problems/storafmaeli)
+```rust
+use std::io;
+
+fn main() {
+    let mut input = String::new();
+    
+    io::stdin()
+        .read_line(&mut input)
+        .unwrap();
+    
+    let number: i32 = input.trim().parse().unwrap();
+
+    if number % 10 == 0 {
+        println!("Jebb")
+    } else { 
+        println!("Neibb")
+    }
+}
+```
+
+https://docs.google.com/document/d/1AcD4LcwX-zDkaQXT9bLqrroH-RYsjeZyDXhNWs2307Y/edit?tab=t.0
+
+## Að Lokum: Kattis dæmi til að reyna við
+
+- [hipphipp](https://iceland.kattis.com/problems/hipphipp)
+- [budarkassi1](https://iceland.kattis.com/problems/budarkassi1)
