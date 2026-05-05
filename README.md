@@ -221,7 +221,7 @@ Ef þið lesið villuna getið þið lagað kóðann fyrir mig og fengið rétta
 
 ```rust
 fn main() {
-    let x = 10;
+    let mut x = 10;
 
     x += 5;
 
@@ -238,7 +238,7 @@ fn main() {
 } // 0..=5 <-- er líka hægt og prentar þá líka 5.
 ``` 
 
-### While lúpa
+### While lúpur
 
 ```rust
 fn main() {
