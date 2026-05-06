@@ -78,6 +78,7 @@ fn main() {
 Í þessum kóða er notað gildissvið (scope) {} sem skilar alltaf eitthverju frá sér eftir keyrslu.
 Líkt og () í stærðfræði þar sem unnið er úr sviganum og síðan kemur lokasvar.
 5 * (6 + 7) ==== 5 * (13) ==== 5 * 13 (expression búin að skila sér) ==== 65
+
 Expressions eru líka kall í fall eða fjölvaskipun (macro)
 
 ## Eigendur
@@ -164,10 +165,10 @@ Vísa nemendum beint inná [Rust Playground](play.rust-lang.org)
 Eigendur eru ekkert það flókin. Segjum að ég eigi X. Ég ætla síðan að rétta nemanda hlutnum.
 Þá á nemandinn hlutinn og ég á ekkert við hann að gera. (Move) Svona smá eins og kærasta.
 En ef að ég tek kannski hlutinn en bara í smá stund og ætla mér síðan að skila honum seinna
-þá er það að fá lánað. (Borrow) (&) Svona smá eins og kærasta. 
+þá er það að fá lánað. (Borrow) (&) Svona smá eins og kærasta.
 
 ```rust
-fn main() {
+fn main() { // Búa til breytu og færa owner
     let x = String::from("hello");
 
     let y = x;
@@ -177,7 +178,7 @@ fn main() {
 ```
 
 ```rust
-fn main() {
+fn main() { // Búa til breytu og borrow
     let x = String::from("hello");
 
     let y = &x;
